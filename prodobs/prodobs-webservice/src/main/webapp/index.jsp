@@ -1,334 +1,374 @@
-<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Spring MVC and Hibernate Template</title>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=us-ascii" />
 
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css"
+	media="only screen and (max-device-width: 480px)"
+	href="resources/css/bootstrap-mobile.css" />
 
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css">
+<title>reservation</title>
+<link rel='stylesheet' id='suffusion-google-fonts-css'
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic'
+	type='text/css' media='all' />
+<link rel="stylesheet" href="resources/css/bootstrap.css"
+	type="text/css" />
+<link rel="stylesheet" href="resources/css/font-awesome.css"
+	type="text/css" />
+<link rel="stylesheet" href="resources/css/datepicker.css" type="text/css" />
+<link rel="stylesheet" href="resources/css/prettify.css" type="text/css" />
+<script src="resources/js/prettify.js" type="text/javascript"></script>
+<script src="resources/js/jquery.js" type="text/javascript"></script>
+<script src="resources/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="resources/js/bootstrap-typeahead.js" type="text/javascript"></script>
+<script src="resources/js/urchin.js" type="text/javascript"></script>
+<script src="resources/js/bootstrap-tooltip.js" type="text/javascript"></script>
+<script src="resources/js/bootstrap-modal.js" type="text/javascript"></script>
+<script type="text/javascript" src="resources/js/jquery.tmpl.min.js"></script>
 
-    <!--
-    IMPORTANT:
-    This is Heroku specific styling. Remove to customize.
-    -->
-    <link href="http://heroku.github.com/template-app-bootstrap/heroku.css" rel="stylesheet">
-    <style type="text/css">
-      .instructions { display: none; }
-      .instructions li { margin-bottom: 10px; }
-      .instructions h2 { margin: 18px 0;}
-      .instructions blockquote { margin-top: 10px; }
-      .screenshot {
-        margin-top: 10px;
-        display:block;
-      }
-      .screenshot a {
-        padding: 0;
-        line-height: 1;
-        display: inline-block;
-        text-decoration: none;
-      }
-      .screenshot img, .tool-choice img {
-        border: 1px solid #ddd;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-        -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-      }
-    </style>
-    <!-- /// -->
-    <script type="text/javascript">
-      <!--
-      function appname() {
-          return location.hostname.substring(0,location.hostname.indexOf("."));
-      }
-      // -->
-    </script>
-  </head>
+<link rel="stylesheet" href="resources/css/app.css">
+<link rel="stylesheet" href="resources/css/bootstrap.css">
 
-  <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a href="/" class="brand">Spring MVC and Hibernate Template</a>
-          <!--
-          IMPORTANT:
-          This is Heroku specific markup. Remove to customize.
-          -->
-          <a href="/" class="brand" id="heroku">by <strong>heroku</strong></a>
-          <!-- /// -->
-        </div>
-      </div>
-    </div>
+<script type="text/javascript">
+	//         
+	$(function() {
+		window.prettyPrint && prettyPrint();
+		$('#startDate').datepicker({
+			format : 'mm-dd-yyyy'
+		});
+		$('#endDate').datepicker({
+			format : 'mm-dd-yyyy'
+		});
 
-    <div class="container" id="getting-started">
-      <div class="row">
-        <div class="span8 offset2">
-          <h1 class="alert alert-success">Your app is ready!</h1>
-          
-          <div class="page-header">
-            <h1>Get started with your Spring MVC and Hibernate Application</h1>
-          </div>
-          
-          <div style="margin-bottom: 20px">
-            This is a template for a web application that uses Spring MVC and Hibernate. The sample code is a simple CRUD page that manipulates records for a single model object. To try it out go to the <a href="/people/">people page</a>. Then use Eclipse or the Command Line to deploy some changes. 
-          </div>
-          
-        <ul id="tab" class="nav nav-tabs">
-            <li class="active"><a href="#eclipse-instructions" data-toggle="tab">Use Eclipse 3.7</a></li>
-            <li><a href="#cli-instructions" data-toggle="tab">Use Command Line</a></li>
-        </ul>
+	});
+	//
+	jQuery().ready(function($) {
+		$('#numberOfPassengers').spinner();
 
-        <div class="tab-content">
+	});
+</script>
+<script type="text/javascript">
+	//         
+	_uacct = "UA-106117-1";
+	urchinTracker();
+	//
+</script>
+</head>
+
+<body>
+	<form id="searchForm" method="post">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="btn btn-navbar" data-toggle="collapse"
+						data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+					</a> <a class="brand" href="/prodobs-webservice">AIR LINES INTERNATIONAL TRAVEL</a>
+					<div class="nav-collapse">
+						<ul class="nav pills">
+							<li class="active"><a href="#" title="Contact"><i
+									class="icon-envelope"></i> Contact</a></li>
+						</ul>
 
 
-          <div id="eclipse-instructions" class="instructions tab-pane active">
-            <a name="using-eclipse"></a>
-            <h1>Using Eclipse 3.7:</h1>
-            
-            <h2>Step 1. Setup your environment</h2>
-            <ol>
-              <li>Ensure <a href="http://unicase.blogspot.com/2011/01/egit-tutorial-for-beginners.html">EGit</a> is installed.</li>
-              <li>Ensure the <a href="http://www.eclipse.org/m2e/">Maven Eclipse Plugin</a> is installed.</li>
-              <li>Create an SSH key if you haven't already:
-                <ol>
-                  <li>Go to <code>Window</code> <i class="icon-chevron-right"></i> <code>Preferences</code> <i class="icon-chevron-right"></i> <code>General</code> <i class="icon-chevron-right"></i> <code>Network Connections</code> <i class="icon-chevron-right"></i> <code>SSH2</code></li>
-                  <li>Choose the <code>Key Management</code> tab</li>
-                  <li>Click <code>Generate RSA Key...</code>
-                    <div class="modal hide" id="addingSshKey">
-                      <div class="modal-header">
-                        <a class="close" data-dismiss="modal">×</a>
-                        <h3>Generate RSA Key</h3>
-                      </div>
-                      <div class="modal-body">
-                        <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/2-3-adding-ssh-key.png" alt="SSH Eclipse Preferences Window" />
-                      </div>
-                    </div>
-                    <span class="screenshot">
-                      <a href="#addingSshKey" data-toggle="modal">
-                        <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/2-3-adding-ssh-key.png" alt="SSH Eclipse Preferences Window" width="100" />
-                        <i class="icon-zoom-in"></i>
-                      </a>
-                    </span>
-                  </li>
-                  <li>Copy the generated public key in the text box and <a href="https://api.heroku.com/account/ssh" class="btn btn-primary btn-mini">add it to your account</a></li>
-                  <li>Click <code>Save Private Key...</code>, accepting the defaults</li>
-                  <li>Click <code>Ok</code></li>
-                </ol>
-              </li>
-            </ol>
+						<!---start right toolbar-->
+						<ul class="nav pull-right">
+							<li><a href="#">Logged in as krishna</a></li>
+							<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="#"> <!--Setting--> <b
+									class="caret"></b>
+							</a>
+								<ul class="dropdown-menu">
+									<li><a href="#" title="Add Product Page"><i
+											class="icon-user"></i>&nbsp;Profile Setting</a></li>
+									<li class="divider"></li>
+									<li><a href="#"><i class="icon-off"></i>&nbsp;Logout</a></li>
+								</ul></li>
+						</ul>
+						<!---end right toolbar-->
 
-            <h2>Step 2. Clone the App</h2>
-            <ol>
-              <li>Go to <code>File</code> <i class="icon-chevron-right"></i> <code>Import...</code> <i class="icon-chevron-right"></i> <code>Git</code> <i class="icon-chevron-right"></i> <code>Projects from Git</code>
-                <div class="modal hide" id="importFromGit">
-                  <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-                    <h3>Import</h3>
-                  </div>
-                  <div class="modal-body">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/2-1-import.png" alt="Import" />
-                  </div>
-                </div>
-                <span class="screenshot">
-                  <a href="#importFromGit" data-toggle="modal">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/2-1-import.png" alt="Import" width="100" />
-                    <i class="icon-zoom-in"></i>
-                  </a>
-                </span>
-              </li>
-              <li>Choose <code>URI</code> and click <code>Next</code></li>
-              <li>Enter <code>git@heroku.com:<script>document.write(appname());</script>.git</code> in the <code>URI</code> field.
-                <div class="modal hide" id="cloneGitRepository">
-                  <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-                    <h3>Clone Git Repository</h3>
-                  </div>
-                  <div class="modal-body">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/3-4-clone-git-repo.png" alt="Clone Git Repository" />
-                  </div>
-                </div>
-                <span class="screenshot">
-                  <a href="#cloneGitRepository" data-toggle="modal">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/3-4-clone-git-repo.png" alt="Clone Git Repository" width="100" />
-                    <i class="icon-zoom-in"></i>
-                  </a>
-                </span>
-              </li>
-              <li>Click <code>Next</code> three times
-                <blockquote>
-                Click <code>Yes</code> to the question of authenticity if the question appears.
-                </blockquote>
-              </li>
-              <li>Choose <code>Import as general project</code>
-                <div class="modal hide" id="importProjectsFromGit">
-                  <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-                    <h3>Import Projects from Git</h3>
-                  </div>
-                  <div class="modal-body">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/2-6-import-general.png" alt="Import Projects from Git" />
-                  </div>
-                </div>
-                <span class="screenshot">
-                  <a href="#importProjectsFromGit" data-toggle="modal">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/2-6-import-general.png" alt="Import Projects from Git" width="100" />
-                    <i class="icon-zoom-in"></i>
-                  </a>
-                </span>
-              </li>
-              <li>Click <code>Finish</code></li>
-            </ol>
+					</div>
+				</div>
+			</div>
+		</div>
 
-            <h2>Step 3. Configure the App</h2>
-            <ol>
-              <li>Right-click the project root</li>
-              <li>Choose <code>Configure</code> <i class="icon-chevron-right"></i> <code>Convert to Maven Project</code> </li>
-            </ol>
+		<br /> <br /> <br /> <br />
 
-            <h2>Step 4. Makes some changes to the app</h2>
-            <ol>
-              <li>Open <code>PersonServiceImpl.java</code></li>
-              <li>Query the people in alphabetical order by replacing line 29 with the following two lines:
-                <pre class="once language-java">
-Root&lt;Person&gt; from = c.from(Person.class);
-c.orderBy(em.getCriteriaBuilder().asc(from.get("lastName")));
-                </pre>
-              </li>
-            </ol>
-
-            <h2>Step 5. Deploy to Heroku</h2>
-            <ol>
-              <li>Right-click the project root and choose <code>Team</code> <i class="icon-chevron-right"></i> <code>Commit</code></li>
-              <li>Enter a commit message and click <code>Commit</code>
-                <div class="modal hide" id="commitChanges">
-                  <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-                    <h3>Commit Changes</h3>
-                  </div>
-                  <div class="modal-body">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/6-5-commit.png" alt="Commit Changes" />
-                  </div>
-                </div>
-                <span class="screenshot">
-                  <a href="#commitChanges" data-toggle="modal">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/6-5-commit.png" alt="Commit Changes" width="100" />
-                    <i class="icon-zoom-in"></i>
-                  </a>
-                </span>
-              </li>
-              <li>Right-click the project root and choose <code>Team</code> <i class="icon-chevron-right"></i> <code>Push to Upstream</code></li>
-              <li>Review the push results. At the bottom, a "... deployed to Heroku" message will appear.
-                <div class="modal hide" id="pushResults">
-                  <div class="modal-header">
-                    <a class="close" data-dismiss="modal">×</a>
-                    <h3>Push Results</h3>
-                  </div>
-                  <div class="modal-body">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/6-8-push-result.png" alt="Push Results" />
-                  </div>
-                </div>
-                <span class="screenshot">
-                  <a href="#pushResults" data-toggle="modal">
-                    <img src="https://s3.amazonaws.com/template-app-instructions-screenshots/eclipse/6-8-push-result.png" alt="Push Results" width="100" />
-                    <i class="icon-zoom-in"></i>
-                  </a>
-                </span>
-              </li>
-            </ol>
-
-            <div class="hero-unit">
-              <h1>Done!</h1>
-              <p>You've just cloned, modified, and deployed a brand new app.</p>
-              <a href="/people/" class="btn btn-primary btn-large">See your changes</a>
-                
-              <p style="margin-top: 20px">Learn more at the   
-              <a href="http://devcenter.heroku.com/categories/java">Heroku Dev Center</a></p>
-            </div>
-          </div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3">
+					<div class="well sidebar-nav">
+						<ul class="nav nav-list">
+							<li class="nav-header">Book Tickets</li>
 
 
+							<div class="row-fluid">
+								<p>
+									<div class="controls">
+										<span class="label label-info">Leaving From</span><a href="#"
+											rel="tooltip" title="Select starting airport"> ?</a> <select
+											name="origin" id="origin" style="width: 160px;">
+											<option selected value="JFK">John F Kennedy Intl
+												(JFK)</option>
+											<option value="SFO">San Francisco International
+												(SFO)</option>
+											<option value="LHR">London Heathrow (LHR)</option>
+											<option value="CDG">Charles De Gaulle (CDG)</option>
+										</select>
+									</div>
 
+								</p>
 
+								<p>
+									<div class="controls">
+										<span class="label label-info">Going To</span><a href="#"
+											rel="tooltip" title="Select ending airport"> ?</a> <select
+											name="destination" id="destination" style="width: 160px;">
+											<option value="JFK">John F Kennedy Intl (JFK)</option>
+											<option selected value="SFO">San Francisco
+												International (SFO)</option>
+											<option value="LHR">London Heathrow (LHR)</option>
+											<option value="CDG">Charles De Gaulle (CDG)</option>
+										</select>
+									</div>
 
+								</p>
 
-          <div id="cli-instructions" class="instructions tab-pane">
-            <a name="using-cli"></a>
-            <h1>Using Command Line:</h1>
+								<p>
+									<span class="label label-info">Departure Date</span><a href="#"
+										rel="tooltip" title="Select departure date"> ?</a><br> <input
+										value="06-27-2012" name="startDate" id="startDate" type="text"
+										size="30" style="width: 160px;" type="text" /> <br>
+								</p>
 
-            <h2>Step 1. Setup your environment</h2>
-            <ol>
-              <li>Install the <a href="http://toolbelt.heroku.com">Heroku Toolbelt</a>.</li>
-              <li>Install <a href="http://maven.apache.org/download.html">Maven</a>.</li>
-            </ol>
+								<p>
+									<span class="label label-info">Return Date</span><a href="#"
+										rel="tooltip" title="Select return date"> ?</a><br> <input
+										value="07-05-2012" name="returnDate" id="endDate" type="text"
+										size="30" style="width: 160px;" type="text" /> <br>
+								</p>
 
-            <h2>Step 2. Login to Heroku</h2>
-            <code>heroku login</code>
-            <blockquote>
-              Be sure to create, or associate an SSH key with your account.
-            </blockquote>
-            <pre>
-$ heroku login
-Enter your Heroku credentials.
-Email: naaman@heroku.com
-Password:
-Could not find an existing public key.
-Would you like to generate one? [Yn] Y
-Generating new SSH public key.
-Uploading SSH public key /Users/Administrator/.ssh/id_rsa.pub
-Authentication successful.</pre>
+								<p>
+									<span class="label label-info">Number of Passengers</span><a
+										href="#" rel="tooltip" title="Select number of passengers">
+										?</a><br> <input name="numberOfPassengers"
+										id="numberOfPassengers" type="number" size="30"
+										style="width: 160px;" step="1" value="1" />
+								</p>
+								<button type="submit" class="btn" id="searchResults">Search</button>
+							</div>
+						</ul>
+					</div>
+					<!--/.well -->
+				</div>
+				<!--/span-->
 
-            <h2>Step 3. Clone the App</h2>
-            <code>git clone -o heroku git@heroku.com:<script>document.write(appname())</script>.git</code>
+				<table border="1">
+					<tbody id="dataRegion"></tbody>
+				</table>
 
-            <h2>Step 4. Makes some changes to the app</h2>
-            <ol>
-              <li>Open <code>src/main/java/com/example/PersonServiceImpl.java in your favorite editor</code></li>
-              <li>Query the people in alphabetical order by replacing line 29 with the following two lines:
-                <pre class="once language-java">
-Root&lt;Person&gt; from = c.from(Person.class);
-c.orderBy(em.getCriteriaBuilder().asc(from.get("lastName")));
-                </pre>
-              </li>
-            </ol>
+			</div>
+			<!--/row-->
+			<hr>
+			<a href="#myModal" data-toggle="modal" class="btn-small"> Version
+				1: Current changes </a>
+			<div class="modal" id="myModal" style="display: none;">
+				<div class="modal-header">
+					<a class="close" data-dismiss="modal">×</a>
+					<h3>Current state of application</h3>
+				</div>
+				<div class="modal-body">
+					<p>Version 1:</p>
+					<p>The following changes are implemented: Flight search, flight
+						selection, display deals based on selected flights</p>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" data-dismiss="modal">Close</a>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="datepicker dropdown-menu">
+		<div style="display: block;" class="datepicker-days">
+			<table class=" table-condensed">
+				<thead>
+					<tr>
+						<th class="prev"></th>
+						<th colspan="5" class="switch">June 2012</th>
+						<th class="next"></th>
+					</tr>
 
-            <h2>Step 5. Make sure the app still compiles</h2>
-            <code>mvn clean package</code>
+					<tr>
+						<th class="dow">Su</th>
+						<th class="dow">Mo</th>
+						<th class="dow">Tu</th>
+						<th class="dow">We</th>
+						<th class="dow">Th</th>
+						<th class="dow">Fr</th>
+						<th class="dow">Sa</th>
+					</tr>
+				</thead>
 
-            <h2>Step 6. Deploy your changes</h2>
-            <ol>
-              <li><code>git commit -am "New changes to deploy"</code></li>
-              <li><code>git push heroku master</code></li>
-            </ol>
+				<tbody>
+					<tr>
+						<td class="day old">27</td>
+						<td class="day old">28</td>
+						<td class="day old">29</td>
+						<td class="day old">30</td>
+						<td class="day old">31</td>
+						<td class="day">1</td>
+						<td class="day">2</td>
+					</tr>
 
-            <div class="hero-unit">
-              <h1>Done!</h1>
-              <p>You've just cloned, modified, and deployed a brand new app.</p>
-              <a href="/people/" class="btn btn-primary btn-large">See your changes</a>
-                
-              <p style="margin-top: 20px">Learn more at the   
-              <a href="http://devcenter.heroku.com/categories/java">Heroku Dev Center</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  <!-- end tab content -->  
-  </div>
+					<tr>
+						<td class="day">3</td>
+						<td class="day">4</td>
+						<td class="day">5</td>
+						<td class="day">6</td>
+						<td class="day">7</td>
+						<td class="day">8</td>
+						<td class="day">9</td>
+					</tr>
 
+					<tr>
+						<td class="day">10</td>
+						<td class="day">11</td>
+						<td class="day">12</td>
+						<td class="day">13</td>
+						<td class="day">14</td>
+						<td class="day">15</td>
+						<td class="day">16</td>
+					</tr>
 
+					<tr>
+						<td class="day">17</td>
+						<td class="day">18</td>
+						<td class="day">19</td>
+						<td class="day">20</td>
+						<td class="day">21</td>
+						<td class="day">22</td>
+						<td class="day">23</td>
+					</tr>
 
+					<tr>
+						<td class="day">24</td>
+						<td class="day active">25</td>
+						<td class="day">26</td>
+						<td class="day">27</td>
+						<td class="day">28</td>
+						<td class="day">29</td>
+						<td class="day">30</td>
+					</tr>
 
+					<tr>
+						<td class="day new">1</td>
+						<td class="day new">2</td>
+						<td class="day new">3</td>
+						<td class="day new">4</td>
+						<td class="day new">5</td>
+						<td class="day new">6</td>
+						<td class="day new">7</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
-    <script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tab.js"></script>
-  </body>
+		<div style="display: none;" class="datepicker-months">
+			<table class="table-condensed">
+				<thead>
+					<tr>
+						<th class="prev"></th>
+
+						<th colspan="5" class="switch">2012</th>
+
+						<th class="next"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td colspan="7"><span class="month">Jan</span><span
+							class="month">Feb</span><span class="month">Mar</span><span
+							class="month">Apr</span><span class="month">May</span><span
+							class="month active">Jun</span><span class="month">Jul</span><span
+							class="month">Aug</span><span class="month">Sep</span><span
+							class="month">Oct</span><span class="month">Nov</span><span
+							class="month">Dec</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div style="display: none;" class="datepicker-years">
+			<table class="table-condensed">
+				<thead>
+					<tr>
+						<th class="prev"></th>
+
+						<th colspan="5" class="switch">2010-2019</th>
+
+						<th class="next"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td colspan="7"><span class="year old">2009</span><span
+							class="year">2010</span><span class="year">2011</span><span
+							class="year active">2012</span><span class="year">2013</span><span
+							class="year">2014</span><span class="year">2015</span><span
+							class="year">2016</span><span class="year">2017</span><span
+							class="year">2018</span><span class="year">2019</span><span
+							class="year old">2020</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$('#searchResults').click(function() {
+			return getResult();
+		});
+
+		function getResult() {
+			var origin = $("#origin option:selected").val();
+			var destination = $("#destination option:selected").val();
+			var startDate = $("#startDate").val();
+			var endDate = $("#endDate").val();
+
+			$.get("resources/datatemplates/flightList.html",
+					function(template) {
+						//alert(template);
+						$.get("/prodobs-webservice/searchResultsJson?leavingFrom=" + origin
+								+ "&goingTo=" + destination + "&startDate="
+								+ startDate + "&endDate=" + endDate, function(
+								data) {
+							//alert("***" + data);
+							$("#dataRegion").html("");
+							$.tmpl(template, data).appendTo("#dataRegion");
+						});
+
+					});
+
+			return false;
+		}
+
+		function getDetails(code) {
+			alert("***" + code);
+			$.get("resources/datatemplates/deals.html", function(template) {
+				$.get("/prodobs-webservice/deals/" + code, function(data) {
+					$("#dataRegion").html("");
+					$.tmpl(template, data).appendTo("#dataRegion");
+				});
+			});
+			return false;
+		}
+
+		getResult();
+	</script>
+
+</body>
 </html>
