@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+      http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="acme" transaction-type="RESOURCE_LOCAL">
+<!-- this configuration is only there because the classes are not in the persistence project! -->
+		<class>ca.digitaltango.foodop.model.cnf.ConversionFactor</class>
+		<class>ca.digitaltango.foodop.model.cnf.FoodGroup</class>
+		<class>ca.digitaltango.foodop.model.cnf.FoodName</class>
+		<class>ca.digitaltango.foodop.model.cnf.FoodSource</class>
+		<class>ca.digitaltango.foodop.model.cnf.Measure</class>
+		<class>ca.digitaltango.foodop.model.cnf.NutrientAmount</class>
+		<class>ca.digitaltango.foodop.model.cnf.NutrientName</class>
+		<class>ca.digitaltango.foodop.model.cnf.NutrientSource</class>
+		<class>ca.digitaltango.foodop.model.cnf.RefuseAmount</class>
+		<class>ca.digitaltango.foodop.model.cnf.RefuseName</class>
+		<class>ca.digitaltango.foodop.model.cnf.YieldAmount</class>
+		<class>ca.digitaltango.foodop.model.cnf.YieldName</class>
+		<class>ca.digitaltango.foodop.model.user.User</class>
+		<class>ca.digitaltango.foodop.model.diet.QuantityNutriment</class>
+		<class>ca.digitaltango.foodop.model.diet.Diet</class>
+		
+		
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.transaction.flush_before_completion"
+			value="true" />
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+		</properties>
+	</persistence-unit>
+
+</persistence>

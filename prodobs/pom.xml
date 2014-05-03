@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ca.digitaltango.prodobs</groupId>
+	<artifactId>prodobs</artifactId>
+	<packaging>pom</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>prodobs</name>
+	<description>prodobs Project</description>
+	<inceptionYear>2013</inceptionYear>
+	<!--issueManagement> <system>Test Director</system> <url>http://srvpartdi1:7010/qcbin/start_a.htm</url> 
+		</issueManagement> <ciManagement> <system>Luntbuild</system> <url>http://fr0167399d:8080/luntbuild/app.do</url> 
+		</ciManagement -->
+
+	<!-- <properties> -->
+	<!-- <junit.version>4.8.2</junit.version> -->
+	<!-- <org.springframework.version>3.1.1.RELEASE</org.springframework.version> -->
+	<!-- <org.projectlombok.version>0.11.6</org.projectlombok.version> -->
+	<!-- </properties> -->
+
+	<!-- Sub modules of prodobs project -->
+	<modules>
+		<module>prodobs-business</module>
+		<module>prodobs-neo4j</module>
+		<module>prodobs-persistence</module>
+		<module>prodobs-webservice</module>
+	</modules>
+
+	<!-- Versions of submodules. Used for inter-dependencies in sub-projects. -->
+	<properties>
+		<org.springframework.version>3.1.1.RELEASE</org.springframework.version>
+		<!-- Change only this property when changing the version (as well as version 
+			of parent-POM in all pom.xml of all modules). -->
+
+		<prodobs-version>0.1-SNAPSHOT</prodobs-version>
+		<prodobs-business-version>${prodobs-version}</prodobs-business-version>
+		<prodobs-persistence-version>${prodobs-version}</prodobs-persistence-version>
+		<prodobs-neo4j-version>${prodobs-version}</prodobs-neo4j-version>
+		<prodobs-webservice-version>${prodobs-version}</prodobs-webservice-version>
+
+		<copyright.year>2014</copyright.year>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+
+		<junit.version>4.8.2</junit.version>
+		<slf4j.version>1.7.5</slf4j.version>
+		<ch.qos.logback.version>1.0.12</ch.qos.logback.version>
+		<org.projectlombok.version>0.11.6</org.projectlombok.version>
+
+		<!-- <org.joda.version>2.1</org.joda.version> -->
+		<!-- <org.jadira.version>3.0.0.CR3</org.jadira.version> -->
+
+		<org.springframework.version>3.2.5.RELEASE</org.springframework.version>
+		<spring-data.version>1.5.1.RELEASE</spring-data.version>
+		<org.spring.data.neo4j.version>3.0.2.RELEASE</org.spring.data.neo4j.version>
+		<org.neo4j.version>2.0.2</org.neo4j.version>
+		
+		<org.hibernate.validator.version>4.2.0.Final</org.hibernate.validator.version>
+		<javax.validation.version>1.0.0.GA</javax.validation.version>
+
+
+		<aspectj.version>1.6.12</aspectj.version>
+		<!-- <spring.security.version>3.2.3.RELEASE</spring.security.version> -->
+		<!-- <hibernate.version>3.6.0.Final</hibernate.version> -->
+		<!-- <org.commons-dbcp.version>20030825.184428</org.commons-dbcp.version> -->
+		<!-- <org.commons-pool.version>20030825.183949</org.commons-pool.version> -->
+		<!-- <org.mysql.connector.version>5.1.24</org.mysql.connector.version> -->
+		<!-- <org.hsqldb.version>1.8.0.10</org.hsqldb.version> -->
+		<!-- <jetty.version>6.1.4</jetty.version> -->
+
+	</properties>
+
+	<!-- List of developers -->
+	<developers>
+		<developer>
+			<id>elaverdiere</id>
+			<name>Laverdiere, Etienne</name>
+			<email>elaverdiere@digitaltango.ca</email>
+			<roles>
+				<role>Team Leader</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<!-- List of dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${org.projectlombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Test Dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${ch.qos.logback.version}</version>
+		</dependency>
+
+
+		<!-- Spring Dependencies -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+
+	<!-- Build configuration -->
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Ensures we are compiling at 1.6 level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<!-- Facilitates downloading source and javadoc in Eclipse -->
+			<!-- Facilitates downloading source and javadoc in Eclipse -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<wtpmanifest>true</wtpmanifest>
+					<wtpapplicationxml>true</wtpapplicationxml>
+					<wtpversion>2.0</wtpversion>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+
+
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>cobertura-maven-plugin</artifactId> 
+				<executions> <execution> <goals> <goal>clean</goal> </goals> </execution> 
+				</executions> </plugin> -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<forkMode>always</forkMode>
+					<systemProperties>
+						<property>
+							<name>net.sourceforge.cobertura.datafile</name>
+							<value>target/cobertura/cobertura.ser</value>
+						</property>
+						<property>
+							<name>caf.opm.preclosing.config.confidential</name>
+							<value>file:///${PCL_CONF_CONFIDENTIAL}</value>
+						</property>
+						<property>
+							<name>caf.opm.preclosing.config.global</name>
+							<value>file:///${PCL_CONF_GLOBAL}</value>
+						</property>
+					</systemProperties>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+
+	<!-- Reports configuration -->
+	<reporting>
+		<plugins>
+		</plugins>
+	</reporting>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- project dependencies -->
+			<dependency>
+				<groupId>ca.digitaltango.prodobs</groupId>
+				<artifactId>prodobs-persistence</artifactId>
+				<version>${prodobs-persistence-version}</version>
+			</dependency>
+
+			<!-- project dependencies -->
+			<dependency>
+				<groupId>ca.digitaltango.prodobs</groupId>
+				<artifactId>prodobs-business</artifactId>
+				<version>${prodobs-business-version}</version>
+			</dependency>
+
+			<!-- project dependencies -->
+			<dependency>
+				<groupId>ca.digitaltango.prodobs</groupId>
+				<artifactId>prodobs-webservice</artifactId>
+				<version>${prodobs-webservice-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>ca.digitaltango.prodobs</groupId>
+				<artifactId>prodobs-neo4j</artifactId>
+				<version>${prodobs-neo4j-version}</version>
+			</dependency>
+
+			<!-- View Dependencies -->
+
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>${spring-data.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-neo4j</artifactId>
+				<version>${org.spring.data.neo4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.neo4j</groupId>
+				<artifactId>neo4j</artifactId>
+				<version>${org.neo4j.version}</version>
+			</dependency>
+
+
+			<!-- Bean Validation Dependencies -->
+
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${javax.validation.version}</version>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${org.hibernate.validator.version}</version>
+				<scope>compile</scope>
+			</dependency>
+
+			<!-- JPA Persistence Dependencies -->
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate.version}</version>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate.javax.persistence</groupId>
+				<artifactId>hibernate-jpa-2.0-api</artifactId>
+				<version>1.0.0.Final</version>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>${org.hsqldb.version}</version>
+			</dependency>
+
+
+			<!-- Spring Dependencies -->
+			<!-- DB Dependencies -->
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>${org.commons-dbcp.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>${org.commons-pool.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jadira.usertype</groupId>
+				<artifactId>usertype.spi</artifactId>
+				<version>3.0.0.CR3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jadira.usertype</groupId>
+				<artifactId>usertype.core</artifactId>
+				<version>3.0.0.CR3</version>
+			</dependency>
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${org.mysql.connector.version}</version>
+			</dependency>
+
+
+			<!-- Spring Dependencies -->
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${org.springframework.version}</version>
+				<exclusions>
+					<!-- Exclude Commons Logging in favor of SLF4j -->
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${org.springframework.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${org.springframework.version}</version>
+				<type>jar</type>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>org.springframework.maven.milestone</id>
+			<name>Spring Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+</project>
