@@ -13,7 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import ca.digitaltango.prodobs.graph.model.Manu;
+import ca.digitaltango.prodobs.graph.model.Product;
 
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,7 +22,7 @@ import ca.digitaltango.prodobs.graph.model.Manu;
 public class ProductRepositoryTest {
 
 	@Autowired
-	private ManuService manuRepo;
+	private ProductService manuRepo;
 
 	@Test
 	public void testAssertNotNullRepo() {
@@ -33,25 +33,25 @@ public class ProductRepositoryTest {
 	@Test
 	public void testSaveProduct() {
 		Assert.assertNotNull(manuRepo);
-		Manu manu1 = new Manu();
+		Product manu1 = new Product();
 		manu1.setName("test title");
 		manuRepo.save(manu1);
 		log.debug("******** manu id:" + manu1.getId());
 
-		Manu manu2 = new Manu();
+		Product manu2 = new Product();
 		manu2.setName("test title2");
 		manuRepo.save(manu2);
 		log.debug("******** manu id:" + manu2.getId());
 
-		Manu manu3 = new Manu();
+		Product manu3 = new Product();
 		manu3.setName("test title3");
 		manuRepo.save(manu3);
 		log.debug("******** manu id:" + manu3.getId());
 
-		EndResult<Manu> manus = manuRepo.findAll();
-		Iterator<Manu> it = manus.iterator();
+		EndResult<Product> manus = manuRepo.findAll();
+		Iterator<Product> it = manus.iterator();
 		while (it.hasNext()) {
-			Manu m = it.next();
+			Product m = it.next();
 			log.debug("+++++ MANU: " + m.getName());
 		}
 	}

@@ -9,15 +9,6 @@
 	<name>prodobs</name>
 	<description>prodobs Project</description>
 	<inceptionYear>2013</inceptionYear>
-	<!--issueManagement> <system>Test Director</system> <url>http://srvpartdi1:7010/qcbin/start_a.htm</url> 
-		</issueManagement> <ciManagement> <system>Luntbuild</system> <url>http://fr0167399d:8080/luntbuild/app.do</url> 
-		</ciManagement -->
-
-	<!-- <properties> -->
-	<!-- <junit.version>4.8.2</junit.version> -->
-	<!-- <org.springframework.version>3.1.1.RELEASE</org.springframework.version> -->
-	<!-- <org.projectlombok.version>0.11.6</org.projectlombok.version> -->
-	<!-- </properties> -->
 
 	<!-- Sub modules of prodobs project -->
 	<modules>

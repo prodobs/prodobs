@@ -7,22 +7,6 @@
 
 	<persistence-unit name="acme" transaction-type="RESOURCE_LOCAL">
 <!-- this configuration is only there because the classes are not in the persistence project! -->
-		<class>ca.digitaltango.foodop.model.cnf.ConversionFactor</class>
-		<class>ca.digitaltango.foodop.model.cnf.FoodGroup</class>
-		<class>ca.digitaltango.foodop.model.cnf.FoodName</class>
-		<class>ca.digitaltango.foodop.model.cnf.FoodSource</class>
-		<class>ca.digitaltango.foodop.model.cnf.Measure</class>
-		<class>ca.digitaltango.foodop.model.cnf.NutrientAmount</class>
-		<class>ca.digitaltango.foodop.model.cnf.NutrientName</class>
-		<class>ca.digitaltango.foodop.model.cnf.NutrientSource</class>
-		<class>ca.digitaltango.foodop.model.cnf.RefuseAmount</class>
-		<class>ca.digitaltango.foodop.model.cnf.RefuseName</class>
-		<class>ca.digitaltango.foodop.model.cnf.YieldAmount</class>
-		<class>ca.digitaltango.foodop.model.cnf.YieldName</class>
-		<class>ca.digitaltango.foodop.model.user.User</class>
-		<class>ca.digitaltango.foodop.model.diet.QuantityNutriment</class>
-		<class>ca.digitaltango.foodop.model.diet.Diet</class>
-		
 		
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />

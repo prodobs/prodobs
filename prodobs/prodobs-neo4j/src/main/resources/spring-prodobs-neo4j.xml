@@ -15,10 +15,21 @@
 	<context:component-scan base-package="ca.digitaltango.prodobs" />
 	<neo4j:repositories base-package="ca.digitaltango.prodobs.graph.repository" />
 
-
 	<!-- Neo4J -->
 
-	<neo4j:config storeDirectory="target/config-test" base-package="ca.digitaltango.prodobs" />
+    <beans profile="default">
+        <neo4j:config storeDirectory="target/neo4j-db" base-package="ca.digitaltango.prodobs"/>
+    </beans>
+
+    <beans profile="prod">
+        <bean class="org.springframework.data.neo4j.rest.SpringRestGraphDatabase" id="graphDatabaseService">
+            <constructor-arg index="0" value="#{systemEnvironment['NEO4J_REST_URL']}"/>
+            <constructor-arg index="1" value="#{systemEnvironment['NEO4J_LOGIN']}"/>
+            <constructor-arg index="2" value="#{systemEnvironment['NEO4J_PASSWORD']}"/>
+        </bean>
+        
+        <neo4j:config graphDatabaseService="graphDatabaseService"/>
+    </beans>
 
 
 </beans>

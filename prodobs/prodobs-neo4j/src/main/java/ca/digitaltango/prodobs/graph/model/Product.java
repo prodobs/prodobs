@@ -19,7 +19,7 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
  * @author etiennelaverdiere
  *
  */
-public class Manu {
+public class Product{
 
     @GraphId Long id;
     
@@ -27,16 +27,16 @@ public class Manu {
     public String name;
 
     @RelatedTo(type="CONTAINS", direction=Direction.BOTH)
-    public @Fetch Set<Manu> parts = new HashSet<Manu>();
+    public @Fetch Set<Product> parts = new HashSet<Product>();
 
-    public void worksWith(Manu person) {
-        parts.add(person);
+    public void worksWith(Product product) {
+        parts.add(product);
     }
 
     public String toString() {
         String results = name + "'s parts include\n";
         if (parts != null) {
-            for (Manu manu : parts) {
+            for (Product manu : parts) {
                 results += "\t- " + manu.name + "\n";
             }
         }
