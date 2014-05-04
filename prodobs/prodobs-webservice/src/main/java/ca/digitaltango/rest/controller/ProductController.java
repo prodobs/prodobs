@@ -2,6 +2,8 @@ package ca.digitaltango.rest.controller;
 
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,34 +15,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ca.digitaltango.prodobs.graph.model.Product;
 import ca.digitaltango.prodobs.graph.repository.ProductService;
 
+@Slf4j
 @Controller
 public class ProductController {
 
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping("/")
-	public String listProduct(Map<String, Object> map) {
-
+	@RequestMapping("/product")
+	public String getProduct(Map<String, Object> map) {
 		map.put("product", new Product());
 		map.put("productList", productService.findAll().iterator());
-
+		log.debug("*** inside list product!");
 		return "product";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
 	@Transactional
-	public String addProduct(@ModelAttribute("product") Product person) {
-		productService.save(person);
-		
+	public String addProduct(@ModelAttribute("product") Product product) {
+		productService.save(product);
+		log.debug("*** inside add product!");
+
 		return "redirect:/product/";
 	}
 
-	@RequestMapping("/delete/{productId}")
+	@RequestMapping("/product/delete/{productId}")
 	@Transactional
 	public String deleteProduct(@PathVariable("productId") Long personId) {
 		productService.delete(personId);
-		
+		log.debug("*** inside delete product!");
+
 		return "redirect:/product/";
 	}
 }
