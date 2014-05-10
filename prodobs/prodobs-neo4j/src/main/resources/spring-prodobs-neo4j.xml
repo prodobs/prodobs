@@ -12,7 +12,7 @@
 
     <context:annotation-config />
     <context:spring-configured />
-	<context:component-scan base-package="ca.digitaltango.prodobs" />
+	<context:component-scan base-package="ca.digitaltango.prodobs.graph" />
 	<neo4j:repositories base-package="ca.digitaltango.prodobs.graph.repository" />
 
 	<!-- Neo4J -->

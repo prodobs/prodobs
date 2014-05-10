@@ -1,4 +1,4 @@
-package ca.digitaltango.rest.controller;
+package ca.digitaltango.prodobs.rest.controller;
 
 import java.util.Map;
 
@@ -19,6 +19,11 @@ import ca.digitaltango.prodobs.graph.repository.ProductService;
 @Controller
 public class ProductController {
 
+	
+	public ProductController(){
+		log.debug("**** CREATING THE PRODUCT CONTROLLER!");
+	}
+	
 	@Autowired
 	private ProductService productService;
 
