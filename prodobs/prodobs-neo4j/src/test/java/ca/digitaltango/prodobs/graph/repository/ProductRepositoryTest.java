@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.neo4j.conversion.EndResult;
+import org.springframework.data.neo4j.conversion.Result;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,12 +48,12 @@ public class ProductRepositoryTest {
 		manuRepo.save(manu3);
 		log.debug("******** manu id:" + manu3.getId());
 
-		EndResult<Product> manus = manuRepo.findAll();
-		Iterator<Product> it = manus.iterator();
-		while (it.hasNext()) {
-			Product m = it.next();
-			log.debug("+++++ MANU: " + m.getName());
-		}
+//		EndResult<Product> manus = manuRepo.findAll();
+//		Iterator<Product> it = manus.iterator();
+//		while (it.hasNext()) {
+//			Product m = it.next();
+//			log.debug("+++++ MANU: " + m.getName());
+//		}
 	}
 
 }
