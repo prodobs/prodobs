@@ -21,6 +21,8 @@ import ca.digitaltango.prodobs.graph.model.Product;
 @Transactional
 public class ProductRepositoryTest {
 
+
+	
 	@Autowired
 	private ProductService manuRepo;
 

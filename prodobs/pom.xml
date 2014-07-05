@@ -40,7 +40,7 @@
 		<!-- <org.jadira.version>3.0.0.CR3</org.jadira.version> -->
 
 		<org.springframework.version>4.0.5.RELEASE</org.springframework.version>
-		<spring-data.version>1.6.0.RELEASE</spring-data.version>
+		<spring-data.version>2.1.1.RELEASE</spring-data.version>
 		<org.spring.data.neo4j.version>3.1.1.RELEASE</org.spring.data.neo4j.version>
 		<org.neo4j.version>2.1.2</org.neo4j.version>
 
@@ -101,27 +101,6 @@
 			<version>${ch.qos.logback.version}</version>
 		</dependency>
 
-
-		<!-- Spring Dependencies -->
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<type>jar</type>
-			<scope>test</scope>
-		</dependency>
 
 
 	</dependencies>
@@ -313,6 +292,14 @@
 
 
 			<!-- Spring Dependencies -->
+
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+
 
 			<dependency>
 				<groupId>org.springframework</groupId>
