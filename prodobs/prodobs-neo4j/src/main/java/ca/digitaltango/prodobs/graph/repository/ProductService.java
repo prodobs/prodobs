@@ -6,6 +6,6 @@ import ca.digitaltango.prodobs.graph.model.Product;
 
 public interface ProductService extends GraphRepository<Product> {
 
-	Product oldFindByName(String title);
+//	Product findByName(String title);
 
 }
