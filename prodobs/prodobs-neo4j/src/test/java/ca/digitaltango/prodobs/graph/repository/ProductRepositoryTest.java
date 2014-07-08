@@ -13,9 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ca.digitaltango.prodobs.graph.model.Product;
 
 @Slf4j
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "/test-context.xml" })
-@Transactional
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration({ "/test-context.xml" })
+//@Transactional
 public class ProductRepositoryTest {
 
 

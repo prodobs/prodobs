@@ -20,8 +20,8 @@
 	<!-- Neo4J -->
 
 	<beans profile="default">
-		<neo4j:config storeDirectory="target/neo4j-db"
-			base-package="ca.digitaltango.prodobs" />
+		<neo4j:config storeDirectory="target/neo4j-db" base-package="ca.digitaltango"  />
+
 	</beans>
 
 	<beans profile="prod">
